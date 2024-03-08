@@ -1,0 +1,78 @@
+task_name:
+  code: rlddm
+  desc: Reinforcement learning Drift Diffusion Model
+  cite:
+  - 'Frank, M. J., Santamaria, A., O''Reilly, R. C., & Willcutt, E. (2007). Testing computational models of dopamine and noradrenaline dysfunction in attention deficit/hyperactivity disorder. Neuropsychopharmacology, 32(7), 1583-1599.'
+  - 'Frank, M. J., Seeberger, L. C., & O''reilly, R. C. (2004). By carrot or by stick: cognitive reinforcement learning in parkinsonism. Science, 306(5703), 1940-1943.'
+model_name:
+  code: PAL4a
+  desc: Reinforcement Learning Drift Diffusion Model 1
+  cite:
+  - Pedersen, M. L., Frank, M. J., & Biele, G. (2017). The drift diffusion model as the choice rule in reinforcement learning. Psychonomic bulletin & review, 24(4), 1234-1251.
+model_type:
+  code: ''
+  desc: Hierarchical
+data_columns:
+  subjID: A unique identifier for each subject in the data-set.
+  cue: "Nominal integer representing the cue shown for that trial: 1, 2, 3, or 4."
+  keyPressed:
+    Binary value representing the subject's response for that trial (where
+    Press == 1; No press == 0).
+  outcome:
+    Ternary value representing the outcome of that trial (where Positive feedback
+    == 1; Neutral feedback == 0; Negative feedback == -1).
+  rt: Float value representing the time taken for the response on the given trial.
+parameters:
+  invtemp:
+    desc: inverse temperature
+    info: [0, 4.5, 'Inf']
+  alpha:
+    desc: learning rate
+    info: [0, 0.02, 1]
+  threshold:
+    desc: boundary separation
+    info: [0, 1.8, 'Inf']
+  ndt:
+    desc: non-decision time
+    info: [0, 0.3, 'Inf']
+  b:
+    desc: starting point
+    info: [0, 0.5, 1]
+  alpha_assoc:
+    desc: associability learning rate multiplier
+    info: [0, 0.5, 1]
+  kappa:
+    desc: associability multiplier
+    info: [0, 0.5, 'Inf']
+  assoc0:
+    desc: associability initialization
+    info: [0, 0.5, 'Inf']
+regressors:
+  Qgo: 2
+  Qnogo: 2
+  Wgo: 2
+  Wnogo: 2
+  SV: 2
+  Assoc_Arr: 2
+  Omega_Arr: 2
+postpreds:
+- choice_os
+- RT_os
+additional_args:
+- code: RTbound
+  default: 0.1
+  desc: Floating point value representing the lower bound (i.e., minimum allowed)
+    reaction time. Defaults to 0.1 (100 milliseconds).
+# - code: initQ
+#   default: 0.5
+#   desc: 'Floating point value representing the model''s initial value of any choice.'
+# contributors:
+# - name: Hoyoung Doh
+#   email: hoyoung.doh@gmail.com
+#   link: https://hydoh.github.io/
+# - name: Sanghoon Kang
+#   email: sanghoon.kang@yale.edu
+#   link: https://medicine.yale.edu/lab/goldfarb/profile/sanghoon_kang/
+# - name: Jihyun K. Hur
+#   email: jihyun.hur@yale.edu
+#   link: https://jihyuncindyhur.github.io/
