@@ -1,5 +1,5 @@
 # Safety-Efficiency-Trade-off
-The code accompanying our manuscript: Balancing safety and efficiency in human decision making (https://www.biorxiv.org/content/10.1101/2024.01.23.576678v1)
+The code accompanying our manuscript: Balancing safety and efficiency in human decision making (https://elifesciences.org/reviewed-preprints/101371)
 
 Gridworld results can be obtained by running `multiple_runs.py` in `GridWorlds/multiple_runs/`.
 
